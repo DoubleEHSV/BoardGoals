@@ -93,12 +93,13 @@ body {
 
 .card-wrap {
   perspective: 900px;
-  min-height: 220px;
+  height: 220px;
+  transition: height 0.24s ease;
 }
 
 .card {
   width: 100%;
-  min-height: 220px;
+  height: 100%;
   border: 0;
   border-radius: 16px;
   text-align: left;
@@ -153,6 +154,11 @@ body {
   color: var(--accent-soft);
 }
 
+.card-back .content {
+  white-space: pre-wrap;
+  tab-size: 4;
+}
+
 .content {
   display: block;
   flex: 1;
@@ -165,6 +171,11 @@ body {
   scrollbar-width: thin;
   touch-action: pan-y;
   -webkit-overflow-scrolling: touch;
+}
+
+.card-wrap.is-expanded .content {
+  overflow-y: visible;
+  padding-right: 0;
 }
 
 @media (max-width: 640px) {

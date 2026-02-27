@@ -26,6 +26,7 @@ const statusEl = document.getElementById("status");
 const cardTemplate = document.getElementById("cardTemplate");
 const expandAllBtn = document.getElementById("expandAll");
 const collapseAllBtn = document.getElementById("collapseAll");
+const COLLAPSED_CARD_HEIGHT = 220;
 
 async function init() {
   try {
@@ -139,6 +140,7 @@ function renderCards(rows) {
 
   rows.forEach(({ goal, note }) => {
     const node = cardTemplate.content.cloneNode(true);
+    const cardWrap = node.querySelector(".card-wrap");
     const card = node.querySelector(".card");
     const contents = node.querySelectorAll(".content");
 
@@ -148,6 +150,32 @@ function renderCards(rows) {
     card.addEventListener("click", () => {
       card.classList.toggle("is-flipped");
     });
+
+    cardWrap.style.height = `${COLLAPSED_CARD_HEIGHT}px`;
+
+    const expandCard = () => {
+      if (!window.matchMedia("(hover: hover)").matches) {
+        return;
+      }
+
+      const faces = card.querySelectorAll(".card-face");
+      const expandedHeight = Math.max(
+        ...Array.from(faces, (face) => face.scrollHeight),
+        COLLAPSED_CARD_HEIGHT
+      );
+      cardWrap.style.height = `${expandedHeight}px`;
+      cardWrap.classList.add("is-expanded");
+    };
+
+    const collapseCard = () => {
+      cardWrap.classList.remove("is-expanded");
+      cardWrap.style.height = `${COLLAPSED_CARD_HEIGHT}px`;
+    };
+
+    cardWrap.addEventListener("mouseenter", expandCard);
+    cardWrap.addEventListener("mouseleave", collapseCard);
+    card.addEventListener("focus", expandCard);
+    card.addEventListener("blur", collapseCard);
 
     cardsEl.appendChild(node);
   });

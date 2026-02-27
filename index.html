@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Goals Board</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Manrope:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="page">
+      <header class="hero">
+        <p class="eyebrow">Board Goals</p>
+        <h1>Goals and Notes</h1>
+        <p class="subtitle">
+          Click a card to flip between a goal and its supporting note.
+        </p>
+      </header>
+
+      <section class="toolbar" aria-label="Controls">
+        <button id="expandAll" type="button">Show All Notes</button>
+        <button id="collapseAll" type="button">Show All Goals</button>
+      </section>
+
+      <p id="status" class="status" role="status" aria-live="polite">Loading goals...</p>
+
+      <section id="cards" class="cards" aria-label="Goals visualization"></section>
+    </main>
+
+    <template id="cardTemplate">
+      <article class="card-wrap">
+        <button class="card" type="button">
+          <span class="card-face card-front">
+            <span class="label">Goal</span>
+            <span class="content"></span>
+          </span>
+          <span class="card-face card-back">
+            <span class="label">Notes</span>
+            <span class="content"></span>
+          </span>
+        </button>
+      </article>
+    </template>
+
+    <script src="app.js" defer></script>
+  </body>
+</html>

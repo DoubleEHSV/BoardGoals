@@ -1,15 +1,16 @@
 :root {
-  --bg-top: #f2f7ff;
-  --bg-bottom: #fff8ec;
-  --ink: #18314f;
-  --muted: #5a6b7e;
-  --accent: #f26419;
-  --accent-soft: #ffe3d6;
+  --bg-top: #eef3fb;
+  --bg-bottom: #f6faef;
+  --ink: #163a70;
+  --muted: #37537f;
+  --accent: #7fbe3f;
+  --accent-soft: #dcefc7;
+  --accent-secondary: #c91f3a;
   --card-front: #ffffff;
-  --card-back: #173f5f;
-  --card-back-ink: #eef5fb;
-  --ring: #f7b267;
-  --shadow: 0 16px 42px rgba(24, 49, 79, 0.16);
+  --card-back: #153b73;
+  --card-back-ink: #f2f7ff;
+  --ring: #7fbe3f;
+  --shadow: 0 16px 42px rgba(22, 58, 112, 0.18);
 }
 
 * {
@@ -21,8 +22,9 @@ body {
   min-height: 100vh;
   font-family: "Manrope", system-ui, sans-serif;
   color: var(--ink);
-  background: radial-gradient(circle at top right, #dfeeff 0%, transparent 40%),
-    radial-gradient(circle at 10% 80%, #ffe9c7 0%, transparent 35%),
+  background: radial-gradient(circle at top right, #dbe8fb 0%, transparent 42%),
+    radial-gradient(circle at 12% 82%, #e2f2cf 0%, transparent 38%),
+    radial-gradient(circle at 55% 8%, rgba(201, 31, 58, 0.14) 0%, transparent 30%),
     linear-gradient(160deg, var(--bg-top), var(--bg-bottom));
 }
 
@@ -30,6 +32,20 @@ body {
   width: min(1100px, 92vw);
   margin: 0 auto;
   padding: 2.2rem 0 4rem;
+}
+
+.hero {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.hero-logo {
+  display: block;
+  width: min(100%, 520px);
+  max-height: 130px;
+  object-fit: contain;
+  object-position: left center;
+  margin: 0 0 0.35rem;
 }
 
 .hero h1 {
@@ -45,7 +61,7 @@ body {
   text-transform: uppercase;
   font-weight: 700;
   letter-spacing: 0.14em;
-  color: var(--accent);
+  color: var(--accent-secondary);
 }
 
 .subtitle {
@@ -61,21 +77,21 @@ body {
 }
 
 .toolbar button {
-  border: 0;
+  border: 1px solid rgba(22, 58, 112, 0.16);
   border-radius: 999px;
   padding: 0.62rem 1rem;
   font: inherit;
   font-weight: 700;
   cursor: pointer;
-  background: #fff;
-  box-shadow: 0 5px 18px rgba(24, 49, 79, 0.1);
+  background: linear-gradient(180deg, #ffffff 0%, #eef4ff 100%);
+  box-shadow: 0 5px 18px rgba(22, 58, 112, 0.12);
   color: var(--ink);
   transition: transform 0.14s ease, box-shadow 0.14s ease;
 }
 
 .toolbar button:hover {
   transform: translateY(-1px);
-  box-shadow: 0 10px 24px rgba(24, 49, 79, 0.14);
+  box-shadow: 0 10px 24px rgba(22, 58, 112, 0.2);
 }
 
 .status {
@@ -93,7 +109,7 @@ body {
 
 .card-wrap {
   perspective: 900px;
-  height: 220px;
+  height: 250px;
   transition: height 0.24s ease;
 }
 
@@ -134,10 +150,11 @@ body {
 
 .card-front {
   background: var(--card-front);
+  border: 1px solid rgba(22, 58, 112, 0.08);
 }
 
 .card-back {
-  background: linear-gradient(160deg, #224f73 0%, var(--card-back) 100%);
+  background: linear-gradient(160deg, #1f4a89 0%, var(--card-back) 100%);
   color: var(--card-back-ink);
   transform: rotateY(180deg);
 }
@@ -181,6 +198,10 @@ body {
 @media (max-width: 640px) {
   .page {
     padding-top: 1.5rem;
+  }
+
+  .hero-logo {
+    max-height: 88px;
   }
 
   .toolbar {

@@ -26,7 +26,7 @@ const statusEl = document.getElementById("status");
 const cardTemplate = document.getElementById("cardTemplate");
 const expandAllBtn = document.getElementById("expandAll");
 const collapseAllBtn = document.getElementById("collapseAll");
-const COLLAPSED_CARD_HEIGHT = 220;
+const COLLAPSED_CARD_HEIGHT = 250;
 
 async function init() {
   try {
